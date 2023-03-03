@@ -1,4 +1,7 @@
-﻿using Login.DBContext;
+﻿using AdminUI;
+using RoomServiceUI;
+using DataLayer.DBContext;
+using DataLayer.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +29,6 @@ namespace EFProject
             InitializeComponent();
         }
 
-
         #region login button logic
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
@@ -35,11 +37,25 @@ namespace EFProject
                 using LoginContext loginContext = new ();
                 var user = loginContext.People.SingleOrDefault(p=>p.Username==TxtUsername.Text && p.Password == TxtPassword.Password);
                 if (user == null)
-                    MessageBox.Show("Wrong username or password!","Login Failed",MessageBoxButton.OK,MessageBoxImage.Error);
+                    MessageBox.Show("Wrong username or password!", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
                 else if (user.IsAdmin == true)
-                    MessageBox.Show("Welcome again admin :)", "Login succeeded", MessageBoxButton.OK, MessageBoxImage.Information);
-                else
-                    MessageBox.Show("Welcome again room service :)", "Login succeeded", MessageBoxButton.OK, MessageBoxImage.Information);
+                {
+                    AdminUI.MainWindow adminWindow = new ();
+                    Close();
+                    adminWindow.Left = Left;
+                    adminWindow.Top = Top;
+                    adminWindow.Show();
+                    //MessageBox.Show("Welcome again admin :)", "Login succeeded", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else if (user.IsAdmin == false)
+                {
+                    RoomServiceUI.MainWindow roomServiceWindow = new ();
+                    Close();
+                    roomServiceWindow.Left = Left;
+                    roomServiceWindow.Top = Top;
+                    roomServiceWindow.Show();
+                    //MessageBox.Show("Welcome again room service :)", "Login succeeded", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
         }
         #endregion
@@ -99,12 +115,14 @@ namespace EFProject
         #region window controls
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            if(sender is Button)
+                Close();
         }
 
         private void BtnMinimize_Click(object sender, RoutedEventArgs e)
         {
-            WindowState = WindowState.Minimized;
+            if (sender is Button)
+                WindowState = WindowState.Minimized;
         }
 
 
@@ -123,5 +141,6 @@ namespace EFProject
             if(sender is Button)
                 MessageBox.Show("Licesnse Info", "Licesnse", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+
     }
 }

@@ -1,0 +1,41 @@
+﻿<Window x:Class="RoomServiceUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RoomServiceUI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" WindowStyle="None" ResizeMode="NoResize" MouseDown="Window_MouseDown">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Rectangle  Height="10" HorizontalAlignment="Stretch" Fill="OrangeRed"/>
+            <StackPanel Height="30" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Height="30" x:Name="BtnMinimize" Content="-" Width="25" FontSize="20" Background="Transparent" BorderBrush="Transparent" Click="BtnMinimize_Click"></Button>
+                <Button Height="30" x:Name="BtnMaxmize" Content="🗖" Width="25" FontSize="20" Background="Transparent" BorderBrush="Transparent" Click="BtnMaxmize_Click"></Button>
+                <Button Height="30" x:Name="BtnClose" Content="x" Width="25" FontSize="20" Background="Transparent" BorderBrush="Transparent" Click="BtnClose_Click"></Button>
+            </StackPanel>
+            <Label Margin="20 0 0 0" FontSize="25" Content="Room Service"></Label>
+            <StackPanel Margin="10 0 0 0" Orientation="Horizontal">
+                <Label x:Name="LblTodo" FontSize="15" MouseDown="LblTodo_MouseDown">TODO</Label>
+                <Label x:Name="LblOverview" FontSize="15" MouseDown="LblOverview_MouseDown">Overview</Label>
+            </StackPanel>
+            <StackPanel Margin="10 0 10 0" Orientation="Horizontal">
+                <Rectangle x:Name="RctTodo" Width="50" Height="5" Fill="OrangeRed" />
+                <Rectangle x:Name="RctOverview" Width="70" Height="5" Fill="LightGray" />
+                <Rectangle HorizontalAlignment="Stretch" Height="5" Width="660" Fill="LightGray"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Margin="10 0 10 0" x:Name="PnlTodo" Grid.Row="1">
+            <Label Content="Todo"></Label>
+        </StackPanel>
+
+        <StackPanel Margin="10 0 10 0" Visibility="Hidden" x:Name="PnlOverview" Grid.Row="1">
+            <Label Content="Overview"></Label>
+        </StackPanel>
+    </Grid>
+</Window>

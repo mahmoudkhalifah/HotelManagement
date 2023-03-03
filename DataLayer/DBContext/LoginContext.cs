@@ -1,8 +1,8 @@
 ﻿
-using Login.Entity;
+using DataLayer.Entity;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
-namespace Login.DBContext
+namespace DataLayer.DBContext
 {
     public class LoginContext : DbContext
     {

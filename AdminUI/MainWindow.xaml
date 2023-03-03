@@ -5,8 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdminUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" WindowStyle="None" ResizeMode="NoResize" MouseDown="Window_MouseDown">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Rectangle  Height="10" HorizontalAlignment="Stretch" Fill="GreenYellow"/>
+            <StackPanel Height="30" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Height="30" x:Name="BtnMinimize" Content="-" Width="25" FontSize="20" Background="Transparent" BorderBrush="Transparent" Click="BtnMinimize_Click"></Button>
+                <Button Height="30" x:Name="BtnMaxmize" Content="🗖" Width="25" FontSize="20" Background="Transparent" BorderBrush="Transparent" Click="BtnMaxmize_Click"></Button>
+                <Button Height="30" x:Name="BtnClose" Content="x" Width="25" FontSize="20" Background="Transparent" BorderBrush="Transparent" Click="BtnClose_Click"></Button>
+            </StackPanel>
+            <Label Margin="20 0 0 0" FontSize="25" Content="Admin"></Label>
+            <StackPanel Margin="10 0 0 0" Orientation="Horizontal">
+                <Label x:Name="LblReservation" FontSize="15" MouseDown="LblReservation_MouseDown">Reservation</Label>
+                <Label x:Name="LblUniversalSearch" FontSize="15" MouseDown="LblUniversalSearch_MouseDown">Universal Search</Label>
+                <Label x:Name="LblReservationAdvView" FontSize="15" MouseDown="LblReservationAdvView_MouseDown">Reservation Adv. view</Label>
+                <Label x:Name="LblRoomAvailibility" FontSize="15" MouseDown="LblRoomAvailibility_MouseDown">Room Availibility</Label>
+            </StackPanel>
+            <StackPanel Margin="10 0 10 0" Orientation="Horizontal">
+                <Rectangle x:Name="RctReservation" Width="90" Height="5" Fill="GreenYellow" />
+                <Rectangle x:Name="RctUniversalSearch" Width="115" Height="5" Fill="LightGray" />
+                <Rectangle x:Name="RctReservationAdvView" Width="155" Height="5" Fill="LightGray" />
+                <Rectangle x:Name="RctRoomAvailibility" Width="115" Height="5" Fill="LightGray" />
+                <Rectangle HorizontalAlignment="Stretch" Height="5" Width="310" Fill="LightGray"/>
+            </StackPanel>
+        </StackPanel>
+        
+        <StackPanel Margin="10 0 10 0" x:Name="PnlReservation" Grid.Row="1">
+            <Label Content="Reservation"></Label>
+        </StackPanel>
 
+        <StackPanel Margin="10 0 10 0" Visibility="Hidden" x:Name="PnlUniversalSearch" Grid.Row="1">
+            <Label Content="Universal Search"></Label>
+        </StackPanel>
+
+        <StackPanel Margin="10 0 10 0" Visibility="Hidden" x:Name="PnlReservationAdvView" Grid.Row="1">
+            <Label Content="Reservation Adv. View"></Label>
+        </StackPanel>
+
+        <StackPanel Margin="10 0 10 0" Visibility="Hidden" x:Name="PnlRoomAvailibility" Grid.Row="1">
+            <Label Content="Room Availibility"></Label>
+        </StackPanel>
     </Grid>
 </Window>
