@@ -27,21 +27,24 @@ namespace EFProject
         }
 
 
-        //login logic
+        #region login button logic
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            using LoginContext loginContext = new ();
-            var user = loginContext.People.SingleOrDefault(p=>p.Username==TxtUsername.Text && p.Password == TxtPassword.Password);
-            if (user == null)
-                MessageBox.Show("Wrong username or password!","Login Failed",MessageBoxButton.OK,MessageBoxImage.Error);
-            else if (user.IsAdmin == true)
-                MessageBox.Show("Welcome again admin :)", "Login succeeded", MessageBoxButton.OK, MessageBoxImage.Information);
-            else
-                MessageBox.Show("Welcome again room service :)", "Login succeeded", MessageBoxButton.OK, MessageBoxImage.Information);
+            if(sender is Button)
+            {
+                using LoginContext loginContext = new ();
+                var user = loginContext.People.SingleOrDefault(p=>p.Username==TxtUsername.Text && p.Password == TxtPassword.Password);
+                if (user == null)
+                    MessageBox.Show("Wrong username or password!","Login Failed",MessageBoxButton.OK,MessageBoxImage.Error);
+                else if (user.IsAdmin == true)
+                    MessageBox.Show("Welcome again admin :)", "Login succeeded", MessageBoxButton.OK, MessageBoxImage.Information);
+                else
+                    MessageBox.Show("Welcome again room service :)", "Login succeeded", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
+        #endregion
 
-
-        #region username text box
+        #region username text box events
         private void TxtUsername_GotFocus(object sender, RoutedEventArgs e)
         {
             if (sender is TextBox tb)
@@ -67,8 +70,7 @@ namespace EFProject
         }
         #endregion
 
-
-        #region password box
+        #region password box events
         private void TxtPassword_GotFocus(object sender, RoutedEventArgs e)
         {
             if (sender is PasswordBox pb)
@@ -106,15 +108,20 @@ namespace EFProject
         }
 
 
-
-        #endregion
-
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if(e.ChangedButton == MouseButton.Left)
             {
-                this.DragMove();
+                DragMove();
             }
+        }
+
+        #endregion
+
+        private void License_Click(object sender, RoutedEventArgs e)
+        {
+            if(sender is Button)
+                MessageBox.Show("Licesnse Info", "Licesnse", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using Login.Entity;
 using Microsoft.EntityFrameworkCore;
-
+using System.Configuration;
 namespace Login.DBContext
 {
-    class LoginContext : DbContext
+    public class LoginContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=.;Database=HotelManagementLogin;Trusted_Connection=True;Encrypt=False;");
+            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["loginDB"].ConnectionString);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
