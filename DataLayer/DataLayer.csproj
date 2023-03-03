@@ -1,16 +1,10 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <UseWPF>true</UseWPF>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="icons\password.png" />
-    <None Remove="icons\username.png" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="microsoft.entityframeworkcore.design" Version="7.0.3">
@@ -22,11 +16,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="icons\password.png" />
-    <Resource Include="icons\username.png" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
   </ItemGroup>
 
 </Project>

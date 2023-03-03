@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Login.Entity
 {
-    class RoomService : Person
+    public class RoomService : Person
     {
     }
 }

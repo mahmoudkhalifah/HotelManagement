@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Login.Entity
 {
-    abstract class Person
+    public abstract class Person
     {
         [Key]
         [MaxLength(50)]

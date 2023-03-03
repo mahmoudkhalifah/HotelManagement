@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="icons\password.png" />
+    <None Remove="icons\username.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="icons\password.png" />
+    <Resource Include="icons\username.png" />
+  </ItemGroup>
+
+</Project>

@@ -47,6 +47,6 @@
             </StackPanel>
             <!--#endregion-->
         </StackPanel>
-        <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="50" Height="20" DockPanel.Dock="Bottom" Content="license"></Button>
+        <Button x:Name="License" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="50" Height="20" DockPanel.Dock="Bottom" Content="license" Click="License_Click"/>
     </DockPanel>
 </Window>
