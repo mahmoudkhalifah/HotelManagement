@@ -5,19 +5,48 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EFProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" WindowStyle="SingleBorderWindow">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="1" VerticalAlignment="Center">
-            <Label x:Name="lblUsername">Username</Label>
-            <TextBox x:Name="txtUsername" BorderBrush="CornflowerBlue" BorderThickness="2" Margin="3" >example</TextBox>
-            <Label x:Name="lblPassword">Password</Label>
-            <PasswordBox x:Name="txtPassword" BorderBrush="CornflowerBlue" BorderThickness="2" Margin="3"></PasswordBox>
-            <Button x:Name="btnLogin" Margin="3">login</Button>
+        Title="MainWindow" ResizeMode="NoResize" MinHeight="300" MinWidth="400" Height="300" Width="500" WindowStyle="None" MouseDown="Window_MouseDown">
+    <!--<Window.Resources>
+        <Style x:Key="HoverButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="LightGray"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Green"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>-->
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <!--#region top section-->
+            <Rectangle Height="10" HorizontalAlignment="Stretch" Fill="CornflowerBlue"/>
+            <StackPanel Height="30" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Height="30" x:Name="BtnMinimize" Content="-" Width="20" FontSize="20" Background="Transparent" BorderBrush="Transparent" Click="BtnMinimize_Click"></Button>
+                <Button Height="30" x:Name="BtnClose" Content="x" Width="20" FontSize="20" Background="Transparent" BorderBrush="Transparent" Click="BtnClose_Click"></Button>
+            </StackPanel>
+            <Label Margin="20 0 0 0" FontSize="25" Content="Login"></Label>
+            <!--#endregion-->
+
+            <!--#region login form-->
+            <StackPanel Width="200">
+                <Label Visibility="Hidden" x:Name="LblUsername">Username</Label>
+                <Border BorderBrush="CornflowerBlue" BorderThickness="2">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="20" Height="20" Source="./icons/username.png"/>
+                        <TextBox Width="170" BorderBrush="Transparent" Text="Enter username" x:Name="TxtUsername" Margin="5 0 0 0" LostFocus="TxtUsername_LostFocus" GotFocus="TxtUsername_GotFocus" ></TextBox>
+                    </StackPanel>
+                </Border>
+                <Label Visibility="Hidden" x:Name="LblPassword">Password</Label>
+                <Border BorderBrush="CornflowerBlue" BorderThickness="2">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="20" Height="20" Source="./icons/password.png"/>
+                        <PasswordBox Width="170" BorderBrush="Transparent" Password="Enter password" x:Name="TxtPassword" Margin="5 0 0 0" GotFocus="TxtPassword_GotFocus" LostFocus="TxtPassword_LostFocus"></PasswordBox>
+                    </StackPanel>
+                </Border>
+                <Button x:Name="BtnLogin" Margin=" 0 20 0 0" Click="BtnLogin_Click">login</Button>
+            </StackPanel>
+            <!--#endregion-->
         </StackPanel>
-    </Grid>
+        <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="50" Height="20" DockPanel.Dock="Bottom" Content="license"></Button>
+    </DockPanel>
 </Window>
