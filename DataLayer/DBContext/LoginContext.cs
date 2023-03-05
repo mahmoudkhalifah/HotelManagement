@@ -8,7 +8,7 @@ namespace DataLayer.DBContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["loginDB"].ConnectionString);
+            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["hotelDB"].ConnectionString);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

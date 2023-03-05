@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminUI", "AdminUI\AdminUI.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataLayer", "DataLayer\DataLayer.csproj", "{17F2960F-3A8E-4EEB-A4B7-177E32300B7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomServiceUI", "RoomServiceUI\RoomServiceUI.csproj", "{72EA1AEE-2CD4-48A9-9CF6-F3FEDB2103AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoomServiceUI", "RoomServiceUI\RoomServiceUI.csproj", "{72EA1AEE-2CD4-48A9-9CF6-F3FEDB2103AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

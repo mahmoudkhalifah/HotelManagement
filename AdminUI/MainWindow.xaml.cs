@@ -23,6 +23,14 @@ namespace AdminUI
         public MainWindow()
         {
             InitializeComponent();
+
+            CmbMonth.ItemsSource = System.Globalization.DateTimeFormatInfo.InvariantInfo.MonthNames;
+
+            List<int> days = new ();
+            for(int i=1;i<=31;i++)
+                days.Add (i);
+            CmbDay.ItemsSource = days;
+            
         }
 
         #region window controls

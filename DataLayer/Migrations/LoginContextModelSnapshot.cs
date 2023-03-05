@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Login.Migrations
+namespace DataLayer.Migrations
 {
     [DbContext(typeof(LoginContext))]
     partial class LoginContextModelSnapshot : ModelSnapshot
@@ -21,7 +21,7 @@ namespace Login.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Login.Entity.Person", b =>
+            modelBuilder.Entity("DataLayer.Entity.Person", b =>
                 {
                     b.Property<string>("Username")
                         .HasMaxLength(50)
@@ -44,16 +44,16 @@ namespace Login.Migrations
                     b.UseTphMappingStrategy();
                 });
 
-            modelBuilder.Entity("Login.Entity.Admin", b =>
+            modelBuilder.Entity("DataLayer.Entity.Admin", b =>
                 {
-                    b.HasBaseType("Login.Entity.Person");
+                    b.HasBaseType("DataLayer.Entity.Person");
 
                     b.HasDiscriminator().HasValue(true);
                 });
 
-            modelBuilder.Entity("Login.Entity.RoomService", b =>
+            modelBuilder.Entity("DataLayer.Entity.RoomService", b =>
                 {
-                    b.HasBaseType("Login.Entity.Person");
+                    b.HasBaseType("DataLayer.Entity.Person");
 
                     b.HasDiscriminator().HasValue(false);
                 });

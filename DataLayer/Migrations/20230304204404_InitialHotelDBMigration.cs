@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace Login.Migrations
+namespace DataLayer.Migrations
 {
     /// <inheritdoc />
-    public partial class AdminAndRoomServiceAdded : Migration
+    public partial class InitialHotelDBMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
