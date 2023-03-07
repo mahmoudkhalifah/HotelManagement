@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DialogsUI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,13 +25,62 @@ namespace AdminUI
         {
             InitializeComponent();
 
-            CmbMonth.ItemsSource = System.Globalization.DateTimeFormatInfo.InvariantInfo.MonthNames;
+            CmbMonth.ItemsSource = System.Globalization.DateTimeFormatInfo.InvariantInfo.MonthNames.SkipLast(1);
 
-            List<int> days = new ();
-            for(int i=1;i<=31;i++)
-                days.Add (i);
+            List<string> days = new ();
+            for (int i = 1; i <= 31; i++)
+                days.Add(i.ToString().Length > 1 ? i.ToString():new StringBuilder().Append('0').Append(i).ToString());
             CmbDay.ItemsSource = days;
-            
+
+            CmbState.ItemsSource = new string[] {
+            "Alabama ",
+            "Alaska ",
+            "Arizona ",
+            "Arkansas ",
+            "California ",
+            "Colorado ",
+            "Connecticut ",
+            "Delaware ",
+            "Florida ",
+            "Georgia ",
+            "Hawaii ",
+            "Idaho ",
+            "Illinois Indiana ",
+            "Iowa ",
+            "Kansas ",
+            "Kentucky ",
+            "Louisiana ",
+            "Maine ",
+            "Maryland ",
+            "Massachusetts ",
+            "Michigan ",
+            "Minnesota ",
+            "Mississippi ",
+            "Missouri ",
+            "Montana Nebraska ",
+            "Nevada ",
+            "New Hampshire ",
+            "New Jersey ",
+            "New Mexico ",
+            "New York ",
+            "North Carolina ",
+            "North Dakota ",
+            "Ohio ",
+            "Oklahoma ",
+            "Oregon ",
+            "Pennsylvania Rhode Island ",
+            "South Carolina ",
+            "South Dakota ",
+            "Tennessee ",
+            "Texas ",
+            "Utah ",
+            "Vermont ",
+            "Virginia ",
+            "Washington ",
+            "West Virginia ",
+            "Wisconsin ",
+            "Wyoming"};
+
         }
 
         #region window controls
@@ -134,5 +184,19 @@ namespace AdminUI
             }
         }
         #endregion
+
+        #region Buttons
+        private void BtnFood_Click(object sender, RoutedEventArgs e)
+        {
+            FoodMenu foodMenu = new ();
+            foodMenu.ShowDialog();
+        }
+        #endregion
+
+        private void BtnFinalizeBill_Click(object sender, RoutedEventArgs e)
+        {
+            Bill bill = new ();
+            bill.ShowDialog();
+        }
     }
 }

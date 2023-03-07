@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DialogsUI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -88,5 +89,10 @@ namespace RoomServiceUI
         }
         #endregion
 
+        private void BtnChangeFood_Click(object sender, RoutedEventArgs e)
+        {
+            FoodMenu foodMenu = new();
+            foodMenu.ShowDialog();
+        }
     }
 }
