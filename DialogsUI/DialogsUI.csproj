@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\breakfast.png" />
+    <None Remove="Images\Dinner_new_png.png" />
+    <None Remove="Images\lunch_new_png.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\breakfast.png" />
+    <Resource Include="Images\Dinner_new_png.png" />
+    <Resource Include="Images\lunch_new_png.png" />
+  </ItemGroup>
+
+</Project>

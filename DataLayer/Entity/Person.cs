@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Login.Entity
+namespace DataLayer.Entity
 {
     public abstract class Person
     {
-        [Key]
+        public int Id { get; set; }
         [MaxLength(50)]
         public string Username { get; set; }
         [MaxLength(50)]

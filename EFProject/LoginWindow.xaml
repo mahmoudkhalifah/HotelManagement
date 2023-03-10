@@ -21,8 +21,8 @@
             <!--#region top section-->
             <Rectangle Height="10" HorizontalAlignment="Stretch" Fill="CornflowerBlue"/>
             <StackPanel Height="30" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Height="30" x:Name="BtnMinimize" Content="-" Width="20" FontSize="20" Background="Transparent" BorderBrush="Transparent" Click="BtnMinimize_Click"></Button>
-                <Button Height="30" x:Name="BtnClose" Content="x" Width="20" FontSize="20" Background="Transparent" BorderBrush="Transparent" Click="BtnClose_Click"></Button>
+                <Button Height="30" x:Name="BtnMinimize" Content="-" Width="25" FontSize="20" Background="Transparent" BorderBrush="Transparent" Click="BtnMinimize_Click"/>
+                <Button Height="30" x:Name="BtnClose" Content="x" Width="25" FontSize="20" Background="Transparent" BorderBrush="Transparent" Click="BtnClose_Click"></Button>
             </StackPanel>
             <Label Margin="20 0 0 0" FontSize="25" Content="Login"></Label>
             <!--#endregion-->

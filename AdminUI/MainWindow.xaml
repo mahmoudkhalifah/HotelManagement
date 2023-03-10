@@ -5,8 +5,205 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdminUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="480" Width="800" WindowStyle="None" ResizeMode="NoResize" MouseDown="Window_MouseDown" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="210"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Background" Value="#FFDDDDDD"/>
+            <Setter Property="Foreground" Value="LimeGreen"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+        </Style>
+    </Window.Resources>
+    <Grid Loaded="Grid_Loaded">
+        <!--#region Menu-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Rectangle  Height="10" HorizontalAlignment="Stretch" Fill="GreenYellow"/>
+            <StackPanel Height="30" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Height="30" x:Name="BtnMinimize" Content="-" Width="25" FontSize="20" Background="Transparent" BorderBrush="Transparent" Click="BtnMinimize_Click"></Button>
+                <Button Height="30" x:Name="BtnMaxmize" Content="🗖" Width="25" FontSize="20" Background="Transparent" BorderBrush="Transparent" Click="BtnMaxmize_Click"></Button>
+                <Button Height="30" x:Name="BtnClose" Content="x" Width="25" FontSize="20" Background="Transparent" BorderBrush="Transparent" Click="BtnClose_Click"></Button>
+            </StackPanel>
+            <Label Margin="20 0 0 0" FontSize="25" Content="Admin"></Label>
+            <StackPanel Margin="10 0 0 0" Orientation="Horizontal">
+                <Label x:Name="LblReservation" FontSize="15" MouseDown="LblReservation_MouseDown">Reservation</Label>
+                <Label x:Name="LblUniversalSearch" FontSize="15" MouseDown="LblUniversalSearch_MouseDown">Universal Search</Label>
+                <Label x:Name="LblReservationAdvView" FontSize="15" MouseDown="LblReservationAdvView_MouseDown">Reservation Adv. view</Label>
+                <Label x:Name="LblRoomAvailibility" FontSize="15" MouseDown="LblRoomAvailibility_MouseDown">Room Availibility</Label>
+            </StackPanel>
+            <StackPanel Margin="10 0 10 0" Orientation="Horizontal">
+                <Rectangle x:Name="RctReservation" Width="90" Height="5" Fill="GreenYellow" />
+                <Rectangle x:Name="RctUniversalSearch" Width="115" Height="5" Fill="LightGray" />
+                <Rectangle x:Name="RctReservationAdvView" Width="155" Height="5" Fill="LightGray" />
+                <Rectangle x:Name="RctRoomAvailibility" Width="115" Height="5" Fill="LightGray" />
+                <Rectangle HorizontalAlignment="Stretch" Height="5" Width="310" Fill="LightGray"/>
+            </StackPanel>
+        </StackPanel>
+        <!--#endregion-->
+        
+        <!--#region Reservation Panel-->
+        <Grid Margin="10 0 10 0" x:Name="PnlReservation" Visibility="Visible" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <!--#region Left Panel-->
+            <StackPanel Grid.Column="0" Margin="10" Background="lightgray">
 
+                <Label Margin="12 0 0 0" x:Name="LblName" Content="Name"></Label>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBox x:Name="TxtFirstName" Margin="0 0 5 0" Width="100" Text="First" GotFocus="TxtFirstName_GotFocus" LostFocus="TxtFirstName_LostFocus"></TextBox>
+                    <TextBox x:Name="TxtLastName" Margin="5 0 0 0" Width="100" Text="Last" GotFocus="TxtLastName_GotFocus" LostFocus="TxtLastName_LostFocus"></TextBox>
+                </StackPanel>
+
+                <Label Margin="12 0 0 0" x:Name="LblBirthday" Content="Birthday"></Label>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <ComboBox x:Name="CmbMonth" Margin="0 0 4 0" Width="75" IsEditable="True" IsReadOnly="True" Text="Month"></ComboBox>
+                    <ComboBox x:Name="CmbDay"  Width="50" IsEditable="True" IsReadOnly="True" Text="Day"></ComboBox>
+                    <TextBox x:Name="TxtYear" Margin="4 0 0 0" Width="75" Text="Year" GotFocus="TxtYear_GotFocus" LostFocus="TxtYear_LostFocus"></TextBox>
+                </StackPanel>
+
+                <Label Margin="12 0 0 0" x:Name="LblGender" Content="Gender"></Label>
+                <ComboBox x:Name="CmbGender"  Width="210" IsEditable="True" IsReadOnly="True" Text="Gender">
+                    <ComboBoxItem Content="Male"></ComboBoxItem>
+                    <ComboBoxItem Content="Female"></ComboBoxItem>
+                </ComboBox>
+
+                <Label Margin="12 0 0 0" x:Name="LblPhone" Content="Phone number"></Label>
+                <TextBox x:Name="TxtPhone" Margin="0 0 0 0" Width="210" Text="(999) 999-999" LostFocus="TxtPhone_LostFocus" GotFocus="TxtPhone_GotFocus"></TextBox>
+                
+                <Label Margin="12 0 0 0" x:Name="LblEmail" Content="Your e-mail address"></Label>
+                <TextBox x:Name="TxtEmail" Margin="0 0 0 5" Width="210" Text="mail@ex.com" GotFocus="TxtEmail_GotFocus" LostFocus="TxtEmail_LostFocus"></TextBox>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBox x:Name="TxtApt" Margin="0 5 5 0" Width="100" Text="Apt./Suite" GotFocus="TxtApt_GotFocus" LostFocus="TxtApt_LostFocus"></TextBox>
+                    <TextBox x:Name="TxtCity" Margin="5 5 0 0" Width="100" Text="City" GotFocus="TxtCity_GotFocus" LostFocus="TxtCity_LostFocus"></TextBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <ComboBox x:Name="CmbState" Margin="0 5 5 0" Width="100" IsEditable="True" IsReadOnly="True" Text="State"></ComboBox>
+                    <TextBox x:Name="TxtZip" Margin="5 5 0 0" Width="100" Text="Zip Code" LostFocus="TxtZip_LostFocus" GotFocus="TxtZip_GotFocus"></TextBox>
+                </StackPanel>
+            </StackPanel>
+            <!--#endregion-->
+            
+            <!--#region Center Panel-->
+            <StackPanel Grid.Column="1" Margin="10" Name="CenterGrid" Background="lightgray">
+                <Label Margin="12 0 0 0" x:Name="LblChoices" Content="Your Choices"></Label>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <ComboBox x:Name="CmbNumOfGuests" Margin="0 0 5 5" Width="100" IsEditable="True" IsReadOnly="True" Text="# of guests"></ComboBox>
+                    <ComboBox x:Name="CmbRoomType" Margin="5 0 0 5" Width="100" IsEditable="True" IsReadOnly="True" Text="Room tyoe"></ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <ComboBox x:Name="CmbFloor" Margin="0 0 5 0" Width="100" IsEditable="True" IsReadOnly="True" Text="Floor"></ComboBox>
+                    <ComboBox x:Name="CmbRoomNumber" Margin="5 0 0 0" Width="100" IsEditable="True" IsReadOnly="True" Text="#"></ComboBox>
+                </StackPanel>
+                
+                <Label Margin="12 0 0 0" x:Name="LblEntryDate" Content="Entry [date]"></Label>
+                <DatePicker Name="PckArrivalDate" Width="210" SelectedDateChanged="PckArrivalDate_SelectedDateChanged">
+                    <DatePicker.Resources>
+                        <Style TargetType="DatePickerTextBox">
+                            <Setter Property="IsReadOnly" Value="True"/>
+                        </Style>
+                    </DatePicker.Resources>
+                </DatePicker>
+
+                <Label Margin="12 0 0 0" x:Name="LblDepertureDate" Content="Deperture [date]"></Label>
+                <DatePicker Name="PckDepertureDate" Width="210">
+                    <DatePicker.Resources>
+                        <Style TargetType="DatePickerTextBox">
+                            <Setter Property="IsReadOnly" Value="True"/>
+                        </Style>
+                    </DatePicker.Resources>
+                </DatePicker>
+
+                <Button x:Name="BtnFood" Style="{StaticResource ButtonStyle}" Margin="0 20 0 0" Content="Food and Menu" Click="BtnFood_Click"></Button>
+
+                <StackPanel HorizontalAlignment="Center" Margin="0 10 0 0" Orientation="Horizontal">
+                    <CheckBox x:Name="ChkCheckIn" Margin="0 0 5 0" Content="Check in?">
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="0.75" ScaleY="0.75" />
+                        </CheckBox.LayoutTransform>
+                    </CheckBox>
+                    <CheckBox x:Name="ChkSendSms" Margin="5 0 5 0" Content="Send sms?">
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="0.75" ScaleY="0.75" />
+                        </CheckBox.LayoutTransform>
+                    </CheckBox>
+                    <CheckBox x:Name="ChkFoodStatus" Margin="5 0 0 0" IsEnabled="False" Content="Food/Supply status?">
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="0.75" ScaleY="0.75" />
+                        </CheckBox.LayoutTransform>
+                    </CheckBox>
+                </StackPanel>
+
+                <Button x:Name="BtnFinalizeBill" Style="{StaticResource ButtonStyle}" Margin="0 15 0 0" Content="Finalize bill" Click="BtnFinalizeBill_Click"></Button>
+                
+                <Button Visibility="Hidden" x:Name="BtnSubmit" Style="{StaticResource ButtonStyle}" Margin="0 10 0 0" Content="Submit" Click="BtnSubmit_Click"></Button>
+
+            </StackPanel>
+            <!--#endregion-->
+            
+            <!--#region Right Panel-->
+            <DockPanel LastChildFill="False" Grid.Column="2" Margin="10" Name="RightGrid" Background="lightgray">
+                <ComboBox Name="CmbReservationsEdit" Width="210" Margin="0 20 0 0" DockPanel.Dock="Top" IsEditable="True" IsReadOnly="True" Text="Select reservation to edit" Visibility="Hidden" SelectionChanged="CmbReservationsEdit_SelectionChanged"></ComboBox>
+                <StackPanel DockPanel.Dock="Bottom" Margin="0 0 0 20">
+                    <Button x:Name="BtnUpdate" Style="{StaticResource ButtonStyle}" Margin="0 10 0 0" Content="Update" Foreground="Black" Background="Gray" IsEnabled="False" Visibility="Hidden" Click="BtnUpdate_Click"></Button>
+                    <Button x:Name="BtnDelete" Style="{StaticResource ButtonStyle}" Margin="0 10 0 0" Content="Delete" Foreground="Red" BorderBrush="Red" Background="Black" Visibility="Hidden" Click="BtnDelete_Click"></Button>
+                    <Button x:Name="BtnEdit" Style="{StaticResource ButtonStyle}" Margin="0 10 0 0" Content="Edit Existing reservation" Click="BtnEdit_Click"></Button>
+                    <Button x:Name="BtnNew" Style="{StaticResource ButtonStyle}" Margin="0 10 0 0" Content="New reservation"></Button>
+                </StackPanel>
+            </DockPanel>
+            <!--#endregion-->
+        </Grid>
+        <!--#endregion-->
+        
+        <!--#region Universal Search Panel-->
+        <DockPanel LastChildFill="True" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10 0 10 0" Visibility="Hidden" x:Name="PnlUniversalSearch" Grid.Row="1">
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Name="SearchBar">
+                <TextBox x:Name="TxtSearch" Width="600"></TextBox>
+                <Button x:Name="BtnSearch" Width="50" Content="🔎" Click="BtnSearch_Click"></Button>
+            </StackPanel>
+            <DataGrid DockPanel.Dock="Bottom" x:Name="GrdUniversalSearch" Margin="0 10 0 0" Width="650">
+                
+            </DataGrid>
+        </DockPanel>
+        <!--#endregion-->
+        
+        <!--#region Reservation Advanced View-->
+        <DockPanel Margin="10 0 10 0" Visibility="Hidden" x:Name="PnlReservationAdvView" Grid.Row="1">
+            <DataGrid IsReadOnly="True" x:Name="GrdReservationAdvView"></DataGrid>
+        </DockPanel>
+        <!--#endregion-->
+        
+        <!--#region Room Availability-->
+        <Grid Margin="10 0 10 0" Visibility="Hidden" x:Name="PnlRoomAvailibility" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+            <!--#region Right Panel-->
+            <DockPanel Margin="0 0 5 10" Grid.Column="0">
+                <Label DockPanel.Dock="Top" Content="Occupied"></Label>
+                <Label DockPanel.Dock="Top" Content="Room# | Type | ID# |   Name   |   Phone#"></Label>
+                <ListView x:Name="LstOccupied" DockPanel.Dock="Bottom" Loaded="LstOccupied_Loaded"></ListView>
+            </DockPanel>
+            <!--#endregion-->
+            
+            <!--#region Left Panel-->
+            <DockPanel Margin="5 0 0 10" Grid.Column="1">
+                <Label DockPanel.Dock="Top" Content="Reserved"></Label>
+                <Label DockPanel.Dock="Top" Content="Room# | Type | ID# |   Name   |   Phone#   |   Entry   |  Depart   "></Label>
+                <ListView x:Name="LstReserved" DockPanel.Dock="Bottom" Loaded="LstReserved_Loaded"></ListView>
+            </DockPanel>
+            <!--#endregion-->
+        </Grid>
+        <!--#endregion-->
+            
     </Grid>
 </Window>

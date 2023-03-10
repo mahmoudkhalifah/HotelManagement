@@ -4,6 +4,7 @@ using DataLayer.DBContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataLayer.Migrations
 {
     [DbContext(typeof(HotelContext))]
-    partial class LoginContextModelSnapshot : ModelSnapshot
+    [Migration("20230309202339_changedBirthday")]
+    partial class changedBirthday
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,7 +84,7 @@ namespace DataLayer.Migrations
 
                     b.HasKey("CustomerID");
 
-                    b.ToTable("Customers", (string)null);
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("DataLayer.Entity.Payment", b =>
@@ -120,7 +123,7 @@ namespace DataLayer.Migrations
 
                     b.HasKey("PaymentID");
 
-                    b.ToTable("Payments", (string)null);
+                    b.ToTable("Payments");
                 });
 
             modelBuilder.Entity("DataLayer.Entity.Person", b =>
@@ -146,7 +149,7 @@ namespace DataLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("People", (string)null);
+                    b.ToTable("People");
 
                     b.HasDiscriminator<bool>("IsAdmin");
 
@@ -219,7 +222,7 @@ namespace DataLayer.Migrations
                     b.HasIndex("PaymentID")
                         .IsUnique();
 
-                    b.ToTable("Reservations", (string)null);
+                    b.ToTable("Reservations");
                 });
 
             modelBuilder.Entity("DataLayer.Entity.Admin", b =>

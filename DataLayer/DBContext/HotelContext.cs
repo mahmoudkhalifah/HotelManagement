@@ -1,14 +1,14 @@
 ﻿
-using Login.Entity;
+using DataLayer.Entity;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
-namespace Login.DBContext
+namespace DataLayer.DBContext
 {
-    public class LoginContext : DbContext
+    public class HotelContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["loginDB"].ConnectionString);
+            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["hotelDB"].ConnectionString);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -20,5 +20,11 @@ namespace Login.DBContext
         public virtual DbSet<Person> People { get; set; }
         public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<RoomService> RoomServices { get; set; }
+
+        
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Reservation> Reservations { get; set; }
+        public virtual DbSet<Payment> Payments { get; set; }
+        
     }
 }
