@@ -34,8 +34,8 @@ namespace EFProject
         {
             if(sender is Button)
             {
-                using LoginContext loginContext = new ();
-                var user = loginContext.People.SingleOrDefault(p=>p.Username==TxtUsername.Text && p.Password == TxtPassword.Password);
+                using HotelContext hotelContext = new ();
+                var user = hotelContext.People.SingleOrDefault(p=>p.Username==TxtUsername.Text && p.Password == TxtPassword.Password);
                 if (user == null)
                     MessageBox.Show("Wrong username or password!", "Login Failed", MessageBoxButton.OK, MessageBoxImage.Error);
                 else if (user.IsAdmin == true)

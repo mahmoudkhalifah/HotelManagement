@@ -30,29 +30,29 @@
             <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="20 0 0 0">
                 <StackPanel Orientation="Vertical" Margin="0 0 30 0">
                     <Image Source="Images/breakfast.png" Height="100" Width="100"></Image>
-                    <CheckBox Margin="0 5" x:Name="ChkBreakfast" Content="Breakfast  ($7)"></CheckBox>
-                    <TextBox Width="100" Text="Quantity?"></TextBox>
+                    <CheckBox Margin="0 5" x:Name="ChkBreakfast" Content="Breakfast  ($7)" Checked="ChkBreakfast_Checked" Unchecked="ChkBreakfast_Unchecked"></CheckBox>
+                    <TextBox IsEnabled="False" x:Name="TxtBreakfast" Width="100" Text="Quantity?" GotFocus="TxtGotFocus" LostFocus="TxtLostFocus"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Margin="30 0 0 0">
                     <Image Source="Images/lunch_new_png.png" Height="100" Width="100"></Image>
-                    <CheckBox Margin="0 5" x:Name="ChkLunch" Content="Lunch  ($15)"></CheckBox>
-                    <TextBox Width="100" Text="Quantity?"></TextBox>
+                    <CheckBox Margin="0 5" x:Name="ChkLunch" Content="Lunch  ($15)" Checked="ChkLunch_Checked" Unchecked="ChkLunch_Unchecked"></CheckBox>
+                    <TextBox IsEnabled="False" x:Name="TxtLunch" Width="100" Text="Quantity?" GotFocus="TxtGotFocus" LostFocus="TxtLostFocus"></TextBox>
                 </StackPanel>
             </StackPanel>
             <StackPanel HorizontalAlignment="Left" Margin="20 0 0 0" Orientation="Vertical">
                 <Image Source="Images/Dinner_new_png.png" Height="100" Width="100"></Image>
-                <CheckBox Margin="0 5" x:Name="ChkDinner" Content="Dinner ($15)"></CheckBox>
-                <TextBox Width="100" Text="Quantity?"></TextBox>
+                <CheckBox Margin="0 5" x:Name="ChkDinner" Content="Dinner ($15)" Checked="ChkDinner_Checked" Unchecked="ChkDinner_Unchecked"></CheckBox>
+                <TextBox IsEnabled="False" x:Name="TxtDinner" Width="100" Text="Quantity?" GotFocus="TxtGotFocus" LostFocus="TxtLostFocus"></TextBox>
             </StackPanel>
         </DockPanel>
         
         <DockPanel Grid.Row="2" Grid.Column="1" Margin="10">
-            <Button DockPanel.Dock="Bottom" Content="Next" ></Button>
-            <StackPanel DockPanel.Dock="Top" Margin="0 0 0 10" Background="LightGray">
+            <Button x:Name="BtnNext" DockPanel.Dock="Bottom" Content="Next" Click="BtnNext_Click" ></Button>
+            <StackPanel x:Name="PnlSpecialNeeds" DockPanel.Dock="Top" Margin="0 0 0 10" Background="LightGray">
                 <Label FontSize="20" Content="Special needs"></Label>
-                <CheckBox Margin="5" Content="Cleaning"></CheckBox>
-                <CheckBox Margin="5" Content="Towels"></CheckBox>
-                <CheckBox Margin="5" Content="Sweetest surprise"></CheckBox>
+                <CheckBox x:Name="ChkCleaning" Margin="5" Content="Cleaning"></CheckBox>
+                <CheckBox x:Name="ChkTowels" Margin="5" Content="Towels"></CheckBox>
+                <CheckBox x:Name="ChkSweetestSurprise" Margin="5" Content="Sweetest surprise"></CheckBox>
             </StackPanel>
         </DockPanel>
     </Grid>
